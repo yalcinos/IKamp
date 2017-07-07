@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        /*Class Decleration*/
+        function Teacher (firstname,lastname,age,gender,interest,subjects,lessonarray) {
+            this.firstname = firstname;
+            this.lastname = lastname;
+            this.name = function () {
+                return this.firstname +" "+ this.lastname;
+
+            };
+            this.interest=interest;
+            this.age=age;
+            this.gender=gender;
+            this.bio=function () {
+                return this.name()+"is"+ this.age+"years old. They like"+this.interest;
+            }
+            this.subject=subjects;
+            this.lessonarray=lessonarray;
+
+
+
+        }
+
+        var lesson1={
+
+            id:'34324',
+            semester:'fall',
+            name:'Math'
+        },
+        lesson2={
+            id:'3',
+            semester:'spring fall',
+            name:'Programming'
+
+        };
+
+        var lessons=[lesson1,lesson2];
+        Teacher.prototype.lessonArray=function () {
+            return lessons;
+        }
+
+
+        function getprefix(gender)
+        {
+            var prefix;
+
+
+            if(gender==="male") {
+
+             prefix="Mr.";
+            }
+            else if(gender==="female")
+            {
+                prefix="Ms.";
+            }
+            return prefix;
+
+        }
+
+        Teacher.prototype.printLessons=function () {
+            this.lessonarray.forEach(function (element)
+            {
+                console.log(element.name,element.id,element.semester);
+            })
+        }
+
+
+
+
+        //prototiple yukarıda tanımlanan fonksiyonlar işlevi aynı.
+        Teacher.prototype.greeting=function () {
+
+            return "Hello,My name is "+getprefix(this.gender) + this.lastname + " and I teach "+ this.subject;
+        }
+
+
+        function print() {
+            var teacher1=new Teacher("yalcin","tatar",24,"male","programming","Math.", lessons);
+
+            console.log(teacher1.name()+"is "+ teacher1.age+" years old"+"\nGender:"+ teacher1.gender+"\nInterest "+teacher1.interest+"\nBio:"+teacher1.bio()+
+                "\nSubject:"+teacher1.subject+"\nGreeting: "+teacher1.greeting()+"Lessons:"+teacher1.printLessons());
+        }
+
+
+        print();
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+</html>
